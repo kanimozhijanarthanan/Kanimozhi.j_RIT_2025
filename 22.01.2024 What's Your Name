@@ -1,0 +1,7 @@
+def print_full_name(first, last):
+
+   first name = input ()
+
+   last name = input ()
+
+print_full_name (first name,last name)
