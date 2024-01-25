@@ -1,0 +1,8 @@
+# Read input from STDIN
+N = int(input())
+
+# Convert the integer to a string and count the number of digits
+num_digits = len(str(N))
+
+# Print the result to STDOUT
+print(num_digits)
