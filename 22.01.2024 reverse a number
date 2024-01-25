@@ -1,0 +1,8 @@
+# Read input from STDIN
+N = int(input())
+
+# Reverse the number
+reversed_num = int(str(N)[::-1])
+
+# Print the reversed number to STDOUT
+print(reversed_num)
