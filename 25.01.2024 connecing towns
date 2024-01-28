@@ -1,0 +1,23 @@
+def connectingTowns(n, routes):
+    total_routes = 1
+    for num_routes in routes:
+        total_routes *= num_routes
+        total_routes %= 1234567
+    return total_routes
+
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    t = int(input().strip())
+
+    for t_itr in range(t):
+        n = int(input().strip())
+
+        routes = list(map(int, input().rstrip().split()))
+
+        result = connectingTowns(n, routes)
+
+        fptr.write(str(result) + '\n')
+
+    fptr.close()
