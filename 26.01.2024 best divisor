@@ -1,0 +1,29 @@
+import math
+
+def sum_of_digits(num):
+    # Calculate the sum of digits of a number
+    total = 0
+    while num > 0:
+        total += num % 10
+        num //= 10
+    return total
+
+def best_divisor(n):
+    best_div = 1
+    max_sum = 1
+    
+    # Finding the divisor whose sum of digits is maximum
+    for i in range(2, n + 1):
+        if n % i == 0:
+            sum_digits = sum_of_digits(i)
+            if sum_digits > max_sum:
+                max_sum = sum_digits
+                best_div = i
+            elif sum_digits == max_sum:
+                best_div = min(best_div, i)  # If sums are equal, choose the smaller number
+    return best_div
+
+if __name__ == '__main__':
+    n = int(input().strip())
+    result = best_divisor(n)
+    print(result)
