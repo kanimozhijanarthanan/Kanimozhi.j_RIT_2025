@@ -1,0 +1,20 @@
+
+def gameWithCells(n, m):
+    # Calculate the number of packages required by considering the center points of each cell
+    # Each cell can be covered by a package dropped at its center
+    return ((n + 1) // 2) * ((m + 1) // 2)
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    first_multiple_input = input().rstrip().split()
+
+    n = int(first_multiple_input[0])
+
+    m = int(first_multiple_input[1])
+
+    result = gameWithCells(n, m)
+
+    fptr.write(str(result) + '\n')
+
+    fptr.close()
