@@ -1,0 +1,32 @@
+
+import os
+import sys
+def timeConversion(s):
+    # Split the time string into hours, minutes, and seconds
+    time_split = s.split(":")
+    hours = int(time_split[0])
+    minutes = int(time_split[1])
+    seconds = int(time_split[2][:2])
+    meridian = time_split[2][2:]
+
+    # Convert to 24-hour format
+    if meridian == "AM":
+        if hours == 12:
+            hours = 0
+    else:
+        if hours != 12:
+            hours += 12
+
+    # Format the time components with leading zeros if necessary
+    return "{:02d}:{:02d}:{:02d}".format(hours, minutes, seconds)
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    s = input()
+
+    result = timeConversion(s)
+
+    fptr.write(result + '\n')
+
+    fptr.close()
