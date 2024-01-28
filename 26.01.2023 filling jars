@@ -1,0 +1,31 @@
+
+def solve(n, operations):
+    total = 0
+    
+    # Calculate the total candies added based on operations
+    for op in operations:
+        total += (op[1] - op[0] + 1) * op[2]
+    
+    # Calculate the average
+    average = total // n
+    return average
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    first_multiple_input = input().rstrip().split()
+
+    n = int(first_multiple_input[0])
+
+    m = int(first_multiple_input[1])
+
+    operations = []
+
+    for _ in range(m):
+        operations.append(list(map(int, input().rstrip().split())))
+
+    result = solve(n, operations)
+
+    fptr.write(str(result) + '\n')
+
+    fptr.close()
