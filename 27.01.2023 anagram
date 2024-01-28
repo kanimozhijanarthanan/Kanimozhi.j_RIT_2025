@@ -1,0 +1,51 @@
+
+
+import math
+import os
+import random
+import re
+import sys
+
+def anagram(s):
+    # If the length of the string is odd, it's not possible to split it into two equal substrings
+    if len(s) % 2 != 0:
+        return -1
+    
+    # Split the string into two substrings of equal length
+    mid = len(s) // 2
+    s1 = s[:mid]
+    s2 = s[mid:]
+    
+    # Create frequency counters for each substring
+    freq1 = [0] * 26
+    freq2 = [0] * 26
+    
+    # Update frequency counters for the first substring
+    for char in s1:
+        freq1[ord(char) - ord('a')] += 1
+    
+    # Update frequency counters for the second substring
+    for char in s2:
+        freq2[ord(char) - ord('a')] += 1
+    
+    # Count the number of characters that need to be changed to make the substrings anagrams
+    changes = 0
+    for i in range(26):
+        changes += abs(freq1[i] - freq2[i])
+    
+    # The number of changes needed to make the substrings anagrams is half of the total changes
+    return changes // 2
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    q = int(input().strip())
+
+    for q_itr in range(q):
+        s = input()
+
+        result = anagram(s)
+
+        fptr.write(str(result) + '\n')
+
+    fptr.close()
